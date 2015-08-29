@@ -1,11 +1,15 @@
 <ion-view view-title="Useful Contacts">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="contact in contacts | orderBy:'contact.order'">
-        {{contact.name}}
-		<hr/>
-		{{contact.number}}
+    
+      <ion-item item-icon-left ng-repeat="contact in contacts | orderBy:'contact.order'">
+         <i class="icon ion-chatbubble-working"></i>
+         {{contact.name}}
+		<!-- <hr/> -->
+		<p>{{contact.number}}</p>
+	</div>
       </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>
+ 
