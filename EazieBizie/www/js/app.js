@@ -49,15 +49,35 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
+  .state('app.playlists', {
+    url: '/playlists',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/playlists.html',
+        controller: 'PlaylistsCtrl'
       }
-    })
+    }
+  })
+
+  .state('app.predeparture', {
+    url: '/predeparture',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/predeparture.html',
+        controller: 'PredepartureCtrl'
+      }
+    }
+  })
+
+  .state('app.placestogo', {
+    url: '/placestogo',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/placestogo.html',
+        controller: 'PlacesToGoCtrl'
+      }
+    }
+  })
 
   .state('app.single', {
     url: '/playlists/:playlistId',
