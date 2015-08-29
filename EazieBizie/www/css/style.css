@@ -22,3 +22,7 @@ body{
 .icon.ion-iphone.bigger-icon{
 	font-size: 30px;
 }
+
+.center{
+     text-align:center;
+}

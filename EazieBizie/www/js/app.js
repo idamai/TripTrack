@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var starter = angular.module('starter', ['ionic', 'starter.controllers'])
+var starter = angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -29,8 +29,19 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
     .state('app', {
     url: '/app',
     abstract: true,
-    templateUrl: 'templates/menu.html',
+    templateUrl: 'views/menu.html',
     controller: 'AppCtrl'
+  })
+  
+  .state('app.home', {
+    url: '/home',
+	 views: {
+      'menuContent': {
+        templateUrl: 'views/home.html',
+		controller: 'HomeCtrl'
+      }
+    }
+    
   })
 
   .state('app.search', {
@@ -49,16 +60,6 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
           templateUrl: 'templates/browse.html'
         }
       }
-    })
-
-    .state('app.trips', {
-        url: '/trips',
-        views: {
-          'menuContent': {
-            templateUrl: 'views/trips.html',
-            controller: 'TripsCtrl' 
-          }
-        }
     })
 
     .state('app.notifications', {
@@ -101,7 +102,7 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.trip]', {
+  .state('app.trip', {
     url: '/trip/:tripId',
     views: {
       'menuContent': {
@@ -131,7 +132,7 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/trips');
+  $urlRouterProvider.otherwise('/app/home');
   
   $httpProvider.defaults.useXDomain = true;
   $httpProvider.defaults.withCredentials = true;

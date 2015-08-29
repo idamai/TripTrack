@@ -1,6 +1,4 @@
-angular.module('starter.controllers', [])
-
-.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams, $timeout) {
+starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams, $timeout, TripsService) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -38,6 +36,10 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+  var response = TripsService.getTrips();
+  response.then(function(data) {
+			 $scope.trips  = data;
+  });
 })
 
 .controller('PlaylistsCtrl', function($scope) {
