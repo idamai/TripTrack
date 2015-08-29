@@ -4,15 +4,21 @@ body{
 }
 
 /*change all nav bar color to light blue*/
-[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar{
-	background-color: #34AADC;
-
+[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar, [nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar{
+	background-color: #34AADC !important;
 }
 
 .bar-stable .button.button-clear{
 	color:white;
 }
 
+.title .user-name{
+	color: black !important;
+}
 .bar.bar-stable .title{
 	color: white;
+}
+
+.icon.ion-iphone.bigger-icon{
+	font-size: 30px;
 }

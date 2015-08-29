@@ -1,28 +1,37 @@
 <ion-view view-title="{{trip.location}}">
   <ion-content>
-      <ion-list>
-        <ion-item href="#/app/itinerary/{{trip._id}}">
+   <div="list">
+	 <img ng-src="{{tripimg}}" style = "width: 100%;height: auto;">
+     <a class="item item-icon-left item-icon-right" href="#/app/itinerary/{{trip._id}}">
           <i class="icon ion-map"></i> Itinerary
-        </ion-item>
-        <ion-item href="#/app/checklist/{{trip.country}}">
-         <i class="icon ion-clipboard"></i> Checklist
-        </ion-item>
-        <ion-item href="#/app/contacts/{{trip.country}}">
-          <i class="icon ion-android-call"></i>Emergency Contacts
-        </ion-item>
-        <ion-item href="#/app/predeparture/{{trip.country}}">
-          <i class="icon ion-clipboard"></i> Financial Planning
-        </ion-item>
-        <ion-item href="#/app/events/{{trip.country}}">
+          <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" href="#/app/predeparture/{{trip.country}}">
+          <i class="icon ion-clipboard"></i> Checklist
+          <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" href="#/app/contacts/{{trip.country}}">
+          <i class="icon ion-android-call"></i> Emergency Contacts
+          <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" href="#/app/predeparture/{{trip.country}}">
+          <i class="icon ion-cash"></i> Financial Planning
+          <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" href="#/app/events/{{trip.country}}">
           <i class="icon ion-calendar"></i> Upcoming Events
-        </ion-item>
-		<ion-item href="#/app/localdelights/{{trip.country}}">
+          <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" href="#/app/localdelights/{{trip.country}}">
           <i class="icon ion-ios-wineglass"></i> Local Delights
-        </ion-item>
-		<ion-item href="#/app/places/{{trip.country}}">
-          <i class="icon ion-ios-location"></i> Places to Visit
-        </ion-item>
-      </ion-list>
-    </ion-content>
-</ion-view>
-  
+          <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" href="#/app/places/{{trip.country}}">
+          <i class="icon ion-ios-location"></i>  Places to Visit
+          <i class="icon ion-ios-arrow-forward"></i>
+      </a>
+
+
+  </div>
+
+      
