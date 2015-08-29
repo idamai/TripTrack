@@ -63,17 +63,6 @@ var starter = angular.module('starter', ['ionic', 'ngCordova'])
       }
     })
 
-<<<<<<< HEAD
-=======
-    .state('app.trips', {
-        url: '/trips',
-        views: {
-          'menuContent': {
-            templateUrl: 'views/trips.html',
-            controller: 'TripsCtrl' 
-          }
-        }
-    })
 
     .state('app.tripdetails', {
         url: '/tripdetails/:tripId',
@@ -85,7 +74,6 @@ var starter = angular.module('starter', ['ionic', 'ngCordova'])
         }
     })
 
->>>>>>> b57801ef4a3980f37fd64a925ac6fef902182383
     .state('app.notifications', {
         url: '/notifications',
         views: {
@@ -126,9 +114,7 @@ var starter = angular.module('starter', ['ionic', 'ngCordova'])
     }
   })
 
-<<<<<<< HEAD
-  .state('app.trip', {
-=======
+
   .state('app.events', {
     url: '/events/:locationId',
     views: {
@@ -140,7 +126,6 @@ var starter = angular.module('starter', ['ionic', 'ngCordova'])
   })
 
   .state('app.trip]', {
->>>>>>> b57801ef4a3980f37fd64a925ac6fef902182383
     url: '/trip/:tripId',
     views: {
       'menuContent': {
