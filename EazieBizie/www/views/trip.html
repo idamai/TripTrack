@@ -7,20 +7,19 @@
   <div class="item item-image">
     <img src="{{tripimg}}">
   </div>
-  <div class="item" >
+  <a class="item" href="#/app/tripdetails/{{trip._id}}">
     <h2 style="font-family: 'Source Sans Pro', sans-serif">{{trip.title}}</h2>
 
     <span class="item-note">
       <em>{{trip.date.start}}-{{trip.date.end}}</em>
     </span>
-    <!-- <p>{{trip.date.start}}-{{trip.date.end}}</p> -->
-  </div>
+  </a>
 
 
-  <a class="item dark" href="#">
+  <div class="item dark" href="#">
     <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> and you
     are going
-  </a>
+  </div>
 </div>
 <div class="item item-divider">
     Prepare Myself

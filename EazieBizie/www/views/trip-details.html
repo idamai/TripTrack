@@ -1,0 +1,35 @@
+<ion-view view-title="Meeting Details">
+  <ion-content>
+   <div class="list card">
+
+  <div class="item item-image">
+    <img src="{{tripimg}}">
+  </div>
+  <a class="item" href="#/app/tripdetails/{{trip._id}}">
+    <h2 style="font-family: 'Source Sans Pro', sans-serif">{{trip.title}}</h2>
+
+    <span class="item-note">
+      <em>{{trip.date.start}}-{{trip.date.end}}</em>
+    </span>
+  </a>
+
+  <div class="item dark" href="#">
+    <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> and you
+    are going
+  </div>
+</div>
+<div class="card">
+  <div class="item item-text-wrap">
+	<h3 style="font-family: 'Source Sans Pro', sans-serif">Meeting, {{trip.meeting_detail.time}}</h3>
+	</br>
+	<h2 style="font-family: 'Source Sans Pro', sans-serif">{{trip.meeting_detail.company}}</h2>
+	<p>{{trip.meeting_detail.address}}</p>
+	</br>
+	<h2 style="font-family: 'Source Sans Pro', sans-serif">Meeting Etiquette</h2>
+	<p>{{trip.meeting_detail.etique}}</p>
+  </div>
+</div>
+
+  </ion-content>
+</ion-view>
+ 
