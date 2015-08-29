@@ -52,8 +52,8 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('PlacesCtrl', function($scope, $ionicPopup, $http) {
- $http.get("http://tutturu.walklight.net/ezbz/location/kor/go").then(function(resp) {
+.controller('PlacesCtrl', function($scope, $ionicPopup, $stateParams, $http) {
+ $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/go").then(function(resp) {
     console.log('Success', resp.data);
     // A confirm dialog
    $scope.showConfirm = function(e) {
@@ -77,15 +77,15 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('PredepartureCtrl', function($scope) {
-  $scope.predepartures = [
-    { item: 'Reggae', id: 1 },
-    { item: 'Chill', id: 2 },
-    { item: 'Dubstep', id: 3 },
-    { item: 'Indie', id: 4 },
-    { item: 'Rap', id: 5 },
-    { item: 'Cowbell', id: 6 }
-  ];
+.controller('PredepartureCtrl', function($scope, $stateParams, $http) {
+  $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist").then(function(resp) {
+    console.log('Success', resp.data);
+    
+    $scope.predepartures = resp.data;
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+  })
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
