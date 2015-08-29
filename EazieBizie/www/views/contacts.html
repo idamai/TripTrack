@@ -1,7 +1,7 @@
-<ion-view view-title="Trips">
+<ion-view view-title="Useful Contacts">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="contact in contacts">
+      <ion-item ng-repeat="contact in contacts | orderBy:'contact.order'">
         {{contact.name}}
 		<hr/>
 		{{contact.number}}
