@@ -26,7 +26,7 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
   $stateProvider
 
     .state('app', {
-    url: '/app',
+    url: '/app/:userId',
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
@@ -55,13 +55,23 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
         views: {
           'menuContent': {
             templateUrl: 'views/trips.html',
-            controller: 'TripsCtrl'
+            controller: 'TripsCtrl' 
+          }
+        }
+    })
+
+    .state('app.notifications', {
+        url: '/notifications',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/notifications.html',
+            controller: 'NotificationsCtrl' 
           }
         }
     })
 
   .state('app.predeparture', {
-      url: '/predeparture',
+      url: '/predeparture/:locationId',
       views: {
         'menuContent': {
           templateUrl: 'templates/predeparture.html',
@@ -70,12 +80,22 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-  .state('app.placestogo', {
-    url: '/placestogo',
+  .state('app.places', {
+    url: '/places/:locationId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/placestogo.html',
-        controller: 'PlacesToGoCtrl'
+        templateUrl: 'views/places.html',
+        controller: 'PlacesCtrl'
+      }
+    }
+  })
+
+  .state('app.users', {
+    url: '/users/:userId',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/menu.html',
+        controller: 'UsersCtrl'
       }
     }
   })
@@ -109,7 +129,8 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/trips');
+  
+  
   
   $httpProvider.defaults.useXDomain = true;
   $httpProvider.defaults.withCredentials = true;

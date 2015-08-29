@@ -8,6 +8,11 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-radio-waves">
+        </button>
+      </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
@@ -19,7 +24,7 @@
     <ion-content>
       <ion-list>
         <ion-item menu-close ng-click="login()">
-          Login
+          Login {{user.name}}
         </ion-item>
         <ion-item menu-close href="#/app/search">
           Search
@@ -33,7 +38,7 @@
         <ion-item menu-close href="#/app/predeparture">
           <i class="icon ion-clipboard"></i> Predeparture Checklist
         </ion-item>
-        <ion-item menu-close href="#/app/placestogo">
+        <ion-item menu-close href="#/app/places">
           <i class="icon ion-ios-location"></i> Places To Go
         </ion-item>
       </ion-list>

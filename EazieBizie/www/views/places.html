@@ -1,11 +1,10 @@
-<ion-view view-title="Places To Go">
+<ion-view view-title="Places">
   <ion-content>
     <ion-list>
-		<div class="list card" ng-repeat="place in placestogo">
-
+		<div class="list card" ng-repeat="place in places">
 		  <div class="item">
 		    <h2>{{place.name}}</h2>
-		    <p>{{place.address}}</p>
+		    <p ng-click="showConfirm('{{place.map}}')">{{place.address}}</p>
 		  </div>
 
 		  <div class="item item-body">
