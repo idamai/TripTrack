@@ -1,0 +1,23 @@
+<ion-view view-title="Places To Go">
+  <ion-content>
+    <ion-list>
+		<div class="list card" ng-repeat="place in placestogo">
+
+		  <div class="item">
+		    <h2>{{place.name}}</h2>
+		    <p>{{place.address}}</p>
+		  </div>
+
+		  <div class="item item-body">
+		    <img class="full-image" src="{{place.image}}">
+		  </div>
+
+		  <div class="item">
+		    <p style="white-space : normal;">
+		    	{{place.details}}
+	    	</p>
+		  </div>
+		</div>
+    </ion-list>
+  </ion-content>
+</ion-view>
