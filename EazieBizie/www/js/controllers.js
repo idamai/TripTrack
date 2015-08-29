@@ -51,18 +51,28 @@ angular.module('starter.controllers', ['ngCordova'])
   ];
 })
 
-.controller('EventsCtrl', function($scope, $ionicPopup, $stateParams, $cordovaCalendar, $http) {
+.controller('EventsCtrl', function($scope, $ionicPopup, $stateParams, $ionicPopup, $cordovaCalendar, $http) {
 
 
-  $scope.addEvent = function() {
+  $scope.addEvent = function(name, address, time, id) {
+        var timeslot = time.split('/');
+
         $cordovaCalendar.createEventInteractively({
-            title: 'Space Race',
-            location: 'The Moon',
-            notes: 'Bring sandwiches',
-            startDate: new Date(2015, 0, 15, 18, 30, 0, 0, 0),
-            endDate: new Date(2015, 1, 17, 12, 0, 0, 0, 0)
+            title: name,
+            location: address,
+            startDate: new Date(timeslot[2], timeslot[1], timeslot[0], 9, 0, 0, 0, 0),
+            endDate: new Date(timeslot[2], timeslot[1], timeslot[0], 10, 0, 0, 0, 0),
         }).then(function (result) {
-            console.log("Event created successfully");
+            var alertPopup = $ionicPopup.alert({
+               title: 'Thank You',
+               template: 'Event added to calendar.'
+             });
+             alertPopup.then(function(res) {
+               console.log('Thank you for not eating my delicious ice cream cone');
+               document.getElementById(id).disabled = true;
+               document.getElementById(id).innerHTML="Going";
+               document.getElementById(id).className = "button button-balanced ion-checkmark-round";
+             });
         }, function (err) {
             console.error("There was an error: " + err);
         });
