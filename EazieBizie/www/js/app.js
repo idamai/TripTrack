@@ -104,6 +104,16 @@ var starter = angular.module('starter', ['ionic', 'ngCordova'])
     }
   })
 
+  .state('app.expenses', {
+    url: '/finance/:locationId',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/expenses.html',
+        controller: 'ExpensesCtrl'
+      }
+    }
+  })
+
   .state('app.localdelights', {
     url: '/localdelights/:locationId',
     views: {

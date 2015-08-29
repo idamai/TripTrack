@@ -1,0 +1,40 @@
+<ion-view view-title="Financial Planning">
+  <ion-content>
+  	<p style="text-align: center; font-size: 2em; margin: 50px 0px 50px 0px; ">{{totalReceipts}} Receipts = {{totalExpense}} {{currency}}</p>
+   	<div class="list card" ng-repeat="receipt in receipts">
+	  <a ng-click="openModal('{{receipt.image}}')" class="item item-icon-right">
+	    <i class="icon ion-trash-b" style="    margin-right: 15px;
+    padding-left: 28px;
+    border-left: 1px solid #ddd; color: #ffff;"></i>
+	    <h2>{{receipt.item}}</h2>
+	    <p>{{receipt.time}}</p>
+	    <p>{{receipt.amount}} {{currency}}</p>
+	  </a>
+	</div>
+	<button class="button button-block button-balanced" ng-click="sendFeedback()">
+	  File Claims
+	</button>
+  <script id="contact-modal.html" type="text/ng-template">
+	  <div class="modal">
+	    <ion-header-bar class="bar">
+	      <h1 class="title">Receipt</h1>
+	      <button class="button button-icon button-clear ion-ios-close-empty" ng-click="closeModal()">
+        	</button>
+	    </ion-header-bar>
+
+	    <ion-content>
+	      <div class="card" style="margin-top: 10px; margin-bottom: 65px;
+">
+			  <div class="item item-text-wrap">
+			    <img src="{{image}}" style="width: 100%;"/>
+			  </div>
+			</div>
+	     
+	    </ion-content>
+	     <div class="bar bar-footer bar-assertive">
+		  <div class="title">Remove</div>
+		</div>
+	  </div>
+	</script>
+  </ion-content>
+</ion-view>

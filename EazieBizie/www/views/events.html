@@ -4,11 +4,10 @@
 		<div class="list card" ng-repeat="event in events">
 		  <div class="item">
 		  	<div class="row">
-			  <div class="col col-50">
+			  <div class="col col-100">
 			  	<h2>{{event.name}}</h2>
 		    	<p ng-click="showConfirm('{{event.map}}')" style="white-space: normal;">{{event.address}}</p>
 			  </div>
-			  <div class="col-50"><button class="button button-light ion-ios-plus-empty" style="float:right;" ng-click="addEvent('{{event.name}}', '{{event.address}}','{{event.time}}', '{{event._id}}')" id="{{event._id}}"> Add to Calendar</button></div>
 			</div>
 		  </div>
 
@@ -20,6 +19,9 @@
 		    <p style="white-space : normal;">
 		    	{{event.details}}
 	    	</p>
+		  </div>
+		  <div class="item">
+		  	<button class="button button-dark button-block" ng-click="addEvent('{{event.name}}', '{{event.address}}','{{event.time}}', '{{event._id}}')" id="{{event._id}}"> Add to Calendar</button>
 		  </div>
 		</div>
     </ion-list>
