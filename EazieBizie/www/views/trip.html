@@ -1,7 +1,31 @@
 <ion-view view-title="{{trip.location}}">
   <ion-content>
-   <div="list">
-	 <img ng-src="{{tripimg}}" style = "width: 100%;height: auto;">
+   
+<div class="list card">
+  
+
+  <div class="item item-image">
+    <img src="{{tripimg}}">
+  </div>
+  <a class="item" href="#/app/tripdetails/{{trip._id}}">
+    <h2 style="font-family: 'Source Sans Pro', sans-serif">{{trip.title}}</h2>
+
+    <span class="item-note">
+      <em>{{trip.date.start}}-{{trip.date.end}}</em>
+    </span>
+  </a>
+
+
+  <div class="item dark" href="#">
+    <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> and you
+    are going
+  </div>
+</div>
+<div class="item item-divider">
+    Prepare Myself
+  </div>
+<div="list">
+	<!--  <img ng-src="{{tripimg}}" style = "width: 100%;height: auto;"> -->
      <a class="item item-icon-left item-icon-right" href="#/app/itinerary/{{trip._id}}">
           <i class="icon ion-map"></i> Itinerary
           <i class="icon ion-ios-arrow-forward"></i>
@@ -30,8 +54,10 @@
           <i class="icon ion-ios-location"></i>  Places to Visit
           <i class="icon ion-ios-arrow-forward"></i>
       </a>
+    </div>
 
+  </ion-content>
+</ion-view>
 
-  </div>
 
       

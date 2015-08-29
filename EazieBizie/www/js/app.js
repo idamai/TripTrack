@@ -4,7 +4,8 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var starter = angular.module('starter', ['ionic'])
+
+var starter = angular.module('starter', ['ionic', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -62,6 +63,29 @@ var starter = angular.module('starter', ['ionic'])
       }
     })
 
+<<<<<<< HEAD
+=======
+    .state('app.trips', {
+        url: '/trips',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/trips.html',
+            controller: 'TripsCtrl' 
+          }
+        }
+    })
+
+    .state('app.tripdetails', {
+        url: '/tripdetails/:tripId',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/trip-details.html',
+            controller: 'TripDetailsCtrl' 
+          }
+        }
+    })
+
+>>>>>>> b57801ef4a3980f37fd64a925ac6fef902182383
     .state('app.notifications', {
         url: '/notifications',
         views: {
@@ -102,7 +126,21 @@ var starter = angular.module('starter', ['ionic'])
     }
   })
 
+<<<<<<< HEAD
   .state('app.trip', {
+=======
+  .state('app.events', {
+    url: '/events/:locationId',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/events.html',
+        controller: 'EventsCtrl'
+      }
+    }
+  })
+
+  .state('app.trip]', {
+>>>>>>> b57801ef4a3980f37fd64a925ac6fef902182383
     url: '/trip/:tripId',
     views: {
       'menuContent': {
