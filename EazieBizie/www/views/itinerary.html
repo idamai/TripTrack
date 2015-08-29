@@ -3,8 +3,8 @@
 	<ion-list>
       <ion-item item-icon-left ng-repeat="todo in trip.itinerary" >
         <div class = "row row-center">
-			<div class = "col-20 center">
-				<span class = "h1" ng-switch="todo.type">
+			<div class = "col-10 center">
+				<span class = "h2" ng-switch="todo.type">
 				  <i ng-switch-when="taxi" class = "icon ion-model-s"></i>
 				  <i ng-switch-when="meal" class = "icon ion-wineglass"></i>
 				  <i ng-switch-when="flight" class = "icon ion-plane"></i>
@@ -12,14 +12,14 @@
 				  <i ng-switch-default class = "icon ion-clipboard"></i>
 				</span>
 			</div>
-			<div class = "col-30 center">
-				<h1 class = "h1">{{todo.time.start}}</h1>
+			<div class = "col-33 center">
+				<h1 class = "h2">{{todo.time.start}}</h1>
 			</div>
-			<div class = "col-50 center">
-				<div class = "h3"> 
+			<div class = "col-50">
+				<div class = "h4"> 
 					{{todo.title}}
 				</div>
-				<div class = "h4">
+				<div class = "h5">
 					{{todo.details}}
 				</div>				
 			</div>
