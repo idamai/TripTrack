@@ -70,18 +70,8 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
         }
     })
 
-    .state('app.places', {
-      url: '/places',
-      views: {
-        'menuContent': {
-          templateUrl: 'views/places.html',
-          controller: 'PlacesCtrl'
-        }
-      }
-    })
-
   .state('app.predeparture', {
-      url: '/predeparture',
+      url: '/predeparture/:locationId',
       views: {
         'menuContent': {
           templateUrl: 'templates/predeparture.html',
@@ -90,12 +80,12 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-  .state('app.placestogo', {
-    url: '/placestogo',
+  .state('app.places', {
+    url: '/places/:locationId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/placestogo.html',
-        controller: 'PlacesToGoCtrl'
+        templateUrl: 'views/places.html',
+        controller: 'PlacesCtrl'
       }
     }
   })
