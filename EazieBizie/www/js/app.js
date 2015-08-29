@@ -26,7 +26,7 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
   $stateProvider
 
     .state('app', {
-    url: '/app',
+    url: '/app/:userId',
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
@@ -90,6 +90,16 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+  .state('app.users', {
+    url: '/users/:userId',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/menu.html',
+        controller: 'UsersCtrl'
+      }
+    }
+  })
+
   .state('app.itinerary', {
     url: '/itinerary/:tripId',
     views: {
@@ -110,8 +120,8 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/trips');
-  $urlRouterProvider.otherwise('/app/places');
+  
+  
   
   $httpProvider.defaults.useXDomain = true;
   $httpProvider.defaults.withCredentials = true;
