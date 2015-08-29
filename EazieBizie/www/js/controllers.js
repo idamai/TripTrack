@@ -76,6 +76,31 @@ angular.module('starter.controllers', [])
   })
 })
 
+.controller('LocalDelightsCtrl', function($scope, $ionicPopup, $stateParams, $http) {
+ $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/eat").then(function(resp) {
+    console.log('Success', resp.data);
+   
+    $scope.showConfirm = function(e) {
+     var confirmPopup = $ionicPopup.confirm({
+       title: 'Get Directions',
+       template: 'You will be leaving the app.'
+     });
+     confirmPopup.then(function(res) {
+       if(res) {
+         window.open(e);
+       } else {
+         console.log('You are not sure');
+       }
+     });
+   };
+    
+    $scope.localdelights = resp.data;
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+  })
+})
+
 .controller('PredepartureCtrl', function($scope, $stateParams, $http) {
   $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist").then(function(resp) {
     console.log('Success', resp.data);
