@@ -1,6 +1,7 @@
 <ion-view view-title="{{trip.location}}">
   <ion-content>
       <ion-list>
+	    <img ng-src="{{tripimg}}" style = "width: 100%;height: auto;">
         <ion-item menu-close href="#/app/itinerary/{{trip._id}}">
           <i class="icon ion-map"></i> Itinerary
         </ion-item>
