@@ -80,6 +80,19 @@ angular.module('starter.controllers', [])
  $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/eat").then(function(resp) {
     console.log('Success', resp.data);
    
+    $scope.showConfirm = function(e) {
+     var confirmPopup = $ionicPopup.confirm({
+       title: 'Get Directions',
+       template: 'You will be leaving the app.'
+     });
+     confirmPopup.then(function(res) {
+       if(res) {
+         window.open(e);
+       } else {
+         console.log('You are not sure');
+       }
+     });
+   };
     
     $scope.localdelights = resp.data;
   }, function(err) {
