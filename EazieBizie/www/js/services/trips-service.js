@@ -1,15 +1,6 @@
 starter.service("TripsService", [  '$rootScope', '$http', '$q', function($rootScope, $http, $q) {
 
-	var urlBase = 'http://tutturu.walklight.net/ezbz/';
-
-	var tripsStub = [{
-			id:"30931",
-			title:"Korea Project Genesis"
-		}, {
-			id:"30221",
-			title:"China Offshore Control Project"
-		}
-	];
+	var urlBase = 'http://tutturu.walklight.net/ezbz';
 
 	return {
 		getTrips: function() {
