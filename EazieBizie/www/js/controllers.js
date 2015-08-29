@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngCordova'])
 
 .controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams, $timeout) {
   // With the new view caching in Ionic, Controllers are only called
@@ -51,7 +51,51 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('PlacesCtrl', function($scope, $ionicPopup, $stateParams, $http) {
+.controller('EventsCtrl', function($scope, $ionicPopup, $stateParams, $cordovaCalendar, $http) {
+
+
+  $scope.addEvent = function() {
+        $cordovaCalendar.createEventInteractively({
+            title: 'Space Race',
+            location: 'The Moon',
+            notes: 'Bring sandwiches',
+            startDate: new Date(2015, 0, 15, 18, 30, 0, 0, 0),
+            endDate: new Date(2015, 1, 17, 12, 0, 0, 0, 0)
+        }).then(function (result) {
+            console.log("Event created successfully");
+        }, function (err) {
+            console.error("There was an error: " + err);
+        });
+    }
+
+ $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/do").then(function(resp) {
+    console.log('Success', resp.data);
+    // A confirm dialog
+   $scope.showConfirm = function(e) {
+     var confirmPopup = $ionicPopup.confirm({
+       title: 'Get Directions',
+       template: 'You will be leaving the app.'
+     });
+     confirmPopup.then(function(res) {
+       if(res) {
+         window.open(e);
+       } else {
+         console.log('You are not sure');
+       }
+     });
+   };
+    
+    $scope.events = resp.data;
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+  })
+})
+
+.controller('PlacesCtrl', function($scope, $ionicPopup, $stateParams, $cordovaCalendar, $http) {
+
+
+
  $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/go").then(function(resp) {
     console.log('Success', resp.data);
     // A confirm dialog
@@ -92,7 +136,7 @@ angular.module('starter.controllers', [])
          console.log('You are not sure');
        }
      });
-   };
+   }; 
     
     $scope.localdelights = resp.data;
   }, function(err) {
