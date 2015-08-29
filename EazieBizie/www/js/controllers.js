@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngCordova'])
 
 .controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams, $timeout) {
   // With the new view caching in Ionic, Controllers are only called
@@ -51,7 +51,61 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('PlacesCtrl', function($scope, $ionicPopup, $stateParams, $http) {
+.controller('EventsCtrl', function($scope, $ionicPopup, $stateParams, $ionicPopup, $cordovaCalendar, $http) {
+
+
+  $scope.addEvent = function(name, address, time, id) {
+        var timeslot = time.split('/');
+
+        $cordovaCalendar.createEventInteractively({
+            title: name,
+            location: address,
+            startDate: new Date(timeslot[2], timeslot[1], timeslot[0], 9, 0, 0, 0, 0),
+            endDate: new Date(timeslot[2], timeslot[1], timeslot[0], 10, 0, 0, 0, 0),
+        }).then(function (result) {
+            var alertPopup = $ionicPopup.alert({
+               title: 'Thank You',
+               template: 'Event added to calendar.'
+             });
+             alertPopup.then(function(res) {
+               console.log('Thank you for not eating my delicious ice cream cone');
+               document.getElementById(id).disabled = true;
+               document.getElementById(id).innerHTML="Going";
+               document.getElementById(id).className = "button button-balanced ion-checkmark-round";
+             });
+        }, function (err) {
+            console.error("There was an error: " + err);
+        });
+    }
+
+ $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/do").then(function(resp) {
+    console.log('Success', resp.data);
+    // A confirm dialog
+   $scope.showConfirm = function(e) {
+     var confirmPopup = $ionicPopup.confirm({
+       title: 'Get Directions',
+       template: 'You will be leaving the app.'
+     });
+     confirmPopup.then(function(res) {
+       if(res) {
+         window.open(e);
+       } else {
+         console.log('You are not sure');
+       }
+     });
+   };
+    
+    $scope.events = resp.data;
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+  })
+})
+
+.controller('PlacesCtrl', function($scope, $ionicPopup, $stateParams, $cordovaCalendar, $http) {
+
+
+
  $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/go").then(function(resp) {
     console.log('Success', resp.data);
     // A confirm dialog
@@ -92,7 +146,7 @@ angular.module('starter.controllers', [])
          console.log('You are not sure');
        }
      });
-   };
+   }; 
     
     $scope.localdelights = resp.data;
   }, function(err) {
