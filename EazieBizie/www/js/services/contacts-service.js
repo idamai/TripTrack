@@ -1,22 +1,19 @@
-starter.service("ContactsService", [  '$rootScope', function($rootScope) {
+starter.service("ContactsService", [  '$rootScope', '$http', '$q', function($rootScope , $http, $q) {
 
-
-	var contactsStub = [{
-			name:"Police",
-			number:"3238742"
-		}, {
-			name:"Firedept",
-			number:"43548584"
-		}
-	];
+	var urlBase ='http://tutturu.walklight.net/ezbz/location/';
 
 	return {
-		getContacts: function(locationId) {
-			
-			var contacts = contactsStub;
-			
-			return contacts;
-			
+		get: function(locationId) {
+			var deferred = $q.defer();
+			$http({
+				method : "GET",
+				url : urlBase + locationId+ '/contacts/',
+			}).success(function(data) {
+				deferred.resolve(data);
+			}).error(function(error) {
+				deferred.reject(error);
+			});
+			return deferred.promise;
 		}
 	}
 

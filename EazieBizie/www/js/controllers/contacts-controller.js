@@ -1,5 +1,7 @@
 starter.controller('ContactsCtrl', function($scope, $stateParams, ContactsService) {
 
-  $scope.contacts = ContactsService.getContacts($stateParams.locationId);
-  
+  var response = ContactsService.get($stateParams.locationId);
+  response.then(function(data) {
+			 $scope.contacts  = data;
+	});
 });
