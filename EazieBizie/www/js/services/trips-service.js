@@ -14,8 +14,6 @@ starter.service("TripsService", [  '$rootScope', function($rootScope) {
 		getTrips: function(user) {
 			
 			var trips = tripsStub;
-
-			console.log('trips is loaded');
 			
 			return trips;
 			
