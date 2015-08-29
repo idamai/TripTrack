@@ -33,8 +33,8 @@
         <ion-item menu-close ng-click="login()">
           Logout {{user.name}}
         </ion-item>
-        <ion-item class = "h1">
-          <i class="icon ion-ios-paperplane"></i> Upcoming Trips
+        <ion-item class = "h1 item-divider">
+          Upcoming Trips
         </ion-item>
         <ion-item item-icon-left menu-close ng-repeat="trip in trips" href="#/app/trip/{{trip.id}}">
 			<i class="icon ion-location"></i> {{trip.title}}
