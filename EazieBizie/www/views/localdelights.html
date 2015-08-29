@@ -1,0 +1,22 @@
+<ion-view view-title="Local Delights">
+  <ion-content>
+    <ion-list>
+		<div class="list card" ng-repeat="localdelight in localdelights">
+		  <div class="item">
+		    <h2>{{localdelight.name}}</h2>
+		    <p ng-click="showConfirm('{{localdelight.map}}')">{{localdelight.address}}</p>
+		  </div>
+
+		  <div class="item item-body">
+		    <img class="full-image" src="{{localdelight.image}}">
+		  </div>
+
+		  <div class="item">
+		    <p style="white-space : normal;">
+		    	{{localdelight.details}}
+	    	</p>
+		  </div>
+		</div>
+    </ion-list>
+  </ion-content>
+</ion-view>
