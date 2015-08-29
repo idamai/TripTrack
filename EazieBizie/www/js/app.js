@@ -80,16 +80,25 @@ var starter = angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.single', {
-    url: '/trips/:tripId',
+  .state('app.itinerary', {
+    url: '/itinerary/:tripId',
     views: {
       'menuContent': {
-        templateUrl: 'views/trip.html',
-        controller: 'TripCtrl'
+        templateUrl: 'views/itinerary.html',
+        controller: 'ItineraryCtrl'
       }
     }
   })
   
+  .state('app.contacts', {
+    url: '/contacts/:locationId',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/contacts.html',
+        controller: 'ContactsCtrl'
+      }
+    }
+  });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/trips');
   
