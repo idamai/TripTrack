@@ -9,9 +9,17 @@ starter.service("TripsService", [  '$rootScope', '$http', '$q', function($rootSc
 				method : "GET",
 				url : urlBase + '/trips',
 			}).success(function(data) {
+				window.localStorage.setItem(urlBase + '/trips', JSON.stringify(data));
 				deferred.resolve(data);
 			}).error(function(error) {
-				deferred.reject(error);
+				if(window.localStorage.getItem(urlBase + '/trips') !== undefined) {
+	                var storedData = JSON.parse(window.localStorage.getItem(urlBase + '/trips'));
+	                deferred.resolve(storedData);
+	            }
+	            else{
+					deferred.reject(error);
+				}
+				// deferred.reject(error);
 			});
 			return deferred.promise;
 		},
@@ -21,9 +29,17 @@ starter.service("TripsService", [  '$rootScope', '$http', '$q', function($rootSc
 				method : "GET",
 				url : urlBase + '/trip/' +tripId,
 			}).success(function(data) {
+				window.localStorage.setItem(urlBase + '/trip/' +tripId, JSON.stringify(data));
 				deferred.resolve(data);
 			}).error(function(error) {
-				deferred.reject(error);
+				if(window.localStorage.getItem(urlBase + '/trip/' +tripId) !== undefined) {
+	                var storedData = JSON.parse(window.localStorage.getItem(urlBase + '/trip/' +tripId));
+	                deferred.resolve(storedData);
+	            }
+	            else{
+					deferred.reject(error);
+				}
+				// deferred.reject(error);
 			});
 			return deferred.promise;
 		}

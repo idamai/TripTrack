@@ -9,10 +9,6 @@
         </button>
       </ion-nav-buttons>
 
-      <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-radio-waves">
-        </button>
-      </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
@@ -24,16 +20,15 @@
     <ion-content>
       <ion-list>
         <ion-item menu-close>
-          <a class="item item-avatar" href="#">
-            <img src="https://scontent-sin1-1.xx.fbcdn.net/hphotos-xpf1/t31.0-8/10633412_10152376091207939_1364189787412137862_o.jpg">
-            <h2>Venkman</h2>
-            <p>Back off, man. I'm a scientist.</p>
+          <a class="item item-avatar" href="#/app/profile/idamai">
+            <img src="{{user[0].image}}">
+            <h2>{{user[0].name}}</h2>
+            <p>{{user[0].bio}}</p>
           </a>
         </ion-item>
         <ion-item menu-close ng-click="login()">
-          Logout {{user.name}}
+          Logout {{user[0].username}} 
         </ion-item>
-
         <div="list">
         <ion-item>
           <i class="icon ion-ios-paperplane"></i> Upcoming Trips

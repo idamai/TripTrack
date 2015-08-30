@@ -1,4 +1,4 @@
-starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams, $timeout, TripsService) {
+starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams, $timeout, TripsService, UsersService) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -39,6 +39,19 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
   var response = TripsService.getTrips();
   response.then(function(data) {
 			 $scope.trips  = data;
+  });
+
+
+  var response2 = UsersService.getUser("idamai");
+  response2.then(function(data2) {
+       $scope.user  = data2;
+  });
+})
+
+.controller('ProfileCtrl', function($scope, UsersService) {
+  var response2 = UsersService.getUser("idamai");
+  response2.then(function(data2) {
+       $scope.user  = data2;
   });
 })
 
@@ -92,13 +105,19 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
        if(res) {
          window.open(e);
        } else {
+
          console.log('You are not sure');
        }
      });
    };
-    
+    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/do", JSON.stringify(resp.data));
     $scope.events = resp.data;
   }, function(err) {
+    if(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/do") !== undefined) {
+        var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/do"));
+        // deferred.resolve(storedData);
+        $scope.events = storedData;
+    }
     console.error('ERR', err);
     // err.status will contain the status code
   })
@@ -125,17 +144,28 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
      });
    };
 
+   var receipts = resp.data[0].receipts;
+   console.log(receipts);
+   var string = "Hi Ronald, here are the receipts I've accumulated for work in Korea. <br/>";
+   for(x in receipts) {
+      var count = parseInt(x)+1;
+      string = string.concat("<br /><a href='"+receipts[x].image+"'>" + "Receipt " + count + "</a>");
+   }
+
+   string = string.concat("<br/><br/>Thank you,<br/>" + "Ignatius Damai.");
+
+   console.log(string);
    $scope.sendFeedback= function() {
         if(window.plugins && window.plugins.emailComposer) {
             window.plugins.emailComposer.showEmailComposerWithCallback(function(result) {
                 console.log("Response -> " + result);
             }, 
             "Expenses Claim", // Subject
-            "",                      // Body
+            string,                      // Body
             ["manager@accenture.com"],    // To
             null,                    // CC
             null,                    // BCC
-            false,                   // isHTML
+            true,                   // isHTML
             null,                    // Attachments
             null);                   // Attachment Data
         }
@@ -175,8 +205,20 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
     $scope.receipts = resp.data[0].receipts;
     $scope.totalExpense = resp.data[0].totalExpense;
     $scope.totalReceipts = resp.data[0].totalReceipts;
+    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/finance/"+$stateParams.locationId+"/expenses", JSON.stringify(resp.data));
+
   }, function(err) {
     console.error('ERR', err);
+    if(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/finance/"+$stateParams.locationId+"/expenses") !== undefined) {
+        var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/finance/"+$stateParams.locationId+"/expenses"));
+        // deferred.resolve(storedData);
+        $scope.expenses = storedData;
+
+        $scope.currency = storedData[0].currency;
+        $scope.receipts = storedData[0].receipts;
+        $scope.totalExpense = storedData[0].totalExpense;
+        $scope.totalReceipts = storedData[0].totalReceipts;
+    }
     // err.status will contain the status code
   })
 })
@@ -201,9 +243,14 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
        }
      });
    };
-    
+    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/go", JSON.stringify(resp.data));
     $scope.places = resp.data;
   }, function(err) {
+    if(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/go") !== undefined) {
+        var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/go"));
+        // deferred.resolve(storedData);
+        $scope.places = storedData;
+    }
     console.error('ERR', err);
     // err.status will contain the status code
   })
@@ -226,9 +273,14 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
        }
      });
    }; 
-    
+    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/eat", JSON.stringify(resp.data));
     $scope.localdelights = resp.data;
   }, function(err) {
+    if(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/eat") !== undefined) {
+        var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/eat"));
+        // deferred.resolve(storedData);
+        $scope.localdelights = storedData;
+    }
     console.error('ERR', err);
     // err.status will contain the status code
   })
@@ -237,9 +289,15 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
 .controller('PredepartureCtrl', function($scope, $stateParams, $http) {
   $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist").then(function(resp) {
     console.log('Success', resp.data);
-    
+
+    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist", JSON.stringify(resp.data));
     $scope.predepartures = resp.data;
   }, function(err) {
+    if(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist") !== undefined) {
+        var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist"));
+        // deferred.resolve(storedData);
+        $scope.predepartures = storedData;
+    }
     console.error('ERR', err);
     // err.status will contain the status code
   })

@@ -16,44 +16,62 @@
   </a>
 
 
-  <div class="item dark" href="#">
+  <a class="item dark" href="#/app/attendees/{{trip._id}}">
     <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> <i class="icon ion-android-contact"></i> and you
     are going
-  </div>
+  </a>
 </div>
 <div class="item item-divider">
     Prepare Myself
   </div>
-<div="list">
-	<!--  <img ng-src="{{tripimg}}" style = "width: 100%;height: auto;"> -->
-     <a class="item item-icon-left item-icon-right" href="#/app/itinerary/{{trip._id}}">
-          <i class="icon ion-map"></i> Itinerary
-          <i class="icon ion-ios-arrow-forward"></i>
+	<div class = "row">
+	  <div class = "center col col-33">	
+		 <a style="text-decoration: none;" href="#/app/itinerary/{{trip._id}}">
+			  <h1><i class="icon ion-map"></i></h1>
+			  <div class = "h6"> Itinerary</div>
+		  </a>
+	  </div>
+	   <div class = "center col col-33">	
+		  <a style="text-decoration: none;" href="#/app/predeparture/{{trip.country}}">
+			  <h1><i class="icon ion-clipboard"></i></h1>
+			  <div class = "h6"> Checklist</div>
+		  </a>
+	  </div>
+	  <div class ="center col col-33">	
+      <a style="text-decoration: none;" href="#/app/contacts/{{trip.country}}">
+         <h1> <i class="icon ion-android-call"></i></h1>
+		 <div class = "h6">  Emergency Contacts</div>
       </a>
-      <a class="item item-icon-left item-icon-right" href="#/app/predeparture/{{trip.country}}">
-          <i class="icon ion-clipboard"></i> Checklist
-          <i class="icon ion-ios-arrow-forward"></i>
+	  </div>
+	</div>
+	<div class = "row">
+	   <div class = "center col col-33">	
+      <a style="text-decoration: none;" href="#/app/finance/{{trip.country}}">
+          <h1><i class="icon ion-cash"></i></h1>
+		  <div class = "h6">  Financial Planning</div>
       </a>
-      <a class="item item-icon-left item-icon-right" href="#/app/contacts/{{trip.country}}">
-          <i class="icon ion-android-call"></i> Emergency Contacts
-          <i class="icon ion-ios-arrow-forward"></i>
-      </a>
-      <a class="item item-icon-left item-icon-right" href="#/app/finance/{{trip.country}}">
-          <i class="icon ion-cash"></i> Financial Planning
-          <i class="icon ion-ios-arrow-forward"></i>
-      </a>
-      <a class="item item-icon-left item-icon-right" href="#/app/events/{{trip.country}}">
-          <i class="icon ion-calendar"></i> Upcoming Events
-          <i class="icon ion-ios-arrow-forward"></i>
-      </a>
-      <a class="item item-icon-left item-icon-right" href="#/app/localdelights/{{trip.country}}">
-          <i class="icon ion-ios-wineglass"></i> Local Delights
-          <i class="icon ion-ios-arrow-forward"></i>
-      </a>
-      <a class="item item-icon-left item-icon-right" href="#/app/places/{{trip.country}}">
-          <i class="icon ion-ios-location"></i>  Places to Visit
-          <i class="icon ion-ios-arrow-forward"></i>
-      </a>
+	  </div>
+	   <div class = "center col col-33">	
+		  <a style="text-decoration: none;" href="#/app/events/{{trip.country}}">
+			 <h1> <i class="icon ion-calendar"></i></h1>
+			 <div class = "h6"> Upcoming Events</div>
+		  </a>
+	  </div>
+	   <div class = "center col col-33">	
+		  <a style="text-decoration: none;" href="#/app/localdelights/{{trip.country}}">
+			  <h1><i class="icon ion-ios-wineglass"></i></h1>
+			  <div class = "h6"> Local Delights</div>
+		  </a>
+	  </div>
+	</div>
+	<div class = "row">
+	   <div class = "center col col-33">	
+		  <a style="text-decoration: none;" href="#/app/places/{{trip.country}}">
+			  <h1><i class="icon ion-ios-location"></i></h1>
+			  <div class = "h6"> Places to Visit </div>
+		  </a>
+	  </div>
+	</div>
     </div>
 
   </ion-content>

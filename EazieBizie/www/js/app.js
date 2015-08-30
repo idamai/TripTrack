@@ -154,6 +154,16 @@ var starter = angular.module('starter', ['ionic', 'ngCordova'])
       }
     }
   })
+
+  .state('app.profile', {
+    url: '/profile/:profileId',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      }
+    }
+  })
   
   .state('app.contacts', {
     url: '/contacts/:locationId',
@@ -161,6 +171,15 @@ var starter = angular.module('starter', ['ionic', 'ngCordova'])
       'menuContent': {
         templateUrl: 'views/contacts.html',
         controller: 'ContactsCtrl'
+      }
+    }
+  })
+	.state('app.attendees', {
+    url: '/attendees/:tripId',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/attendees.html',
+        controller: 'AttendeesCtrl'
       }
     }
   });
