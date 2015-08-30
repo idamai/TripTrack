@@ -41,10 +41,11 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
 			 $scope.trips  = data;
   });
 
+  var user = window.localStorage.getItem("user");
 
   var response2 = UsersService.getUser("idamai");
   response2.then(function(data2) {
-       $scope.user  = data2;
+       $scope.user  = JSON.parse(window.localStorage.getItem("user"));
   });
 })
 
@@ -154,7 +155,7 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
 
    string = string.concat("<br/><br/>Thank you,<br/>" + "Ignatius Damai.");
 
-   console.log(string);
+   
    $scope.sendFeedback= function() {
         if(window.plugins && window.plugins.emailComposer) {
             window.plugins.emailComposer.showEmailComposerWithCallback(function(result) {
