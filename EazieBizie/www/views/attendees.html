@@ -1,0 +1,22 @@
+<ion-content>
+   <div ng-repeat="attendee in attendees">
+	  <div ng-if="$index%4==0" class="row">
+        <div class="col col-25 item">
+			 <img id={{$index}} ng-src="{{attendees[$index].image}}" style="width:100%" ng-click="openAttendee(attendees[$index])">
+			 <div class="center">{{attendees[$index].name}}</div>
+		 </div>
+		<div class="col col-25 item" >
+			<img id={{$index+1}} ng-src="{{attendees[$index+1].image}}" style="width:100%" ng-click="openAttendee(attendees[$index+1])">
+			<div class="center">{{attendees[$index+1].name}}</div>
+		 </div>
+		 <div class="col col-25 item">
+			 <img id={{$index+2}} ng-src="{{attendees[$index+2].image}}" style="width:100%" ng-click="openAttendee(attendees[$index+2])">
+			 <div class="center">{{attendees[$index+2].name}}</div>
+		 </div>
+		 <div class="col col-25 item">
+			 <img id={{$index+3}} ng-src="{{attendees[$index+3].image}}" style="width:100%"  ng-click="openAttendee(attendees[$index+3])">
+			 <div class="center">{{attendees[$index+3].name}}</div>
+        </div>
+     </div>
+   </div>
+</ion-content>
