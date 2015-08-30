@@ -105,13 +105,19 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
        if(res) {
          window.open(e);
        } else {
+
          console.log('You are not sure');
        }
      });
    };
-    
+    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/do", JSON.stringify(resp.data));
     $scope.events = resp.data;
   }, function(err) {
+    if(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/do") !== undefined) {
+        var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/do"));
+        // deferred.resolve(storedData);
+        $scope.events = storedData;
+    }
     console.error('ERR', err);
     // err.status will contain the status code
   })
@@ -199,8 +205,20 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
     $scope.receipts = resp.data[0].receipts;
     $scope.totalExpense = resp.data[0].totalExpense;
     $scope.totalReceipts = resp.data[0].totalReceipts;
+    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/finance/"+$stateParams.locationId+"/expenses", JSON.stringify(resp.data));
+
   }, function(err) {
     console.error('ERR', err);
+    if(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/finance/"+$stateParams.locationId+"/expenses") !== undefined) {
+        var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/finance/"+$stateParams.locationId+"/expenses"));
+        // deferred.resolve(storedData);
+        $scope.expenses = storedData;
+
+        $scope.currency = storedData[0].currency;
+        $scope.receipts = storedData[0].receipts;
+        $scope.totalExpense = storedData[0].totalExpense;
+        $scope.totalReceipts = storedData[0].totalReceipts;
+    }
     // err.status will contain the status code
   })
 })
@@ -225,9 +243,14 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
        }
      });
    };
-    
+    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/go", JSON.stringify(resp.data));
     $scope.places = resp.data;
   }, function(err) {
+    if(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/go") !== undefined) {
+        var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/go"));
+        // deferred.resolve(storedData);
+        $scope.places = storedData;
+    }
     console.error('ERR', err);
     // err.status will contain the status code
   })
@@ -250,9 +273,14 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
        }
      });
    }; 
-    
+    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/eat", JSON.stringify(resp.data));
     $scope.localdelights = resp.data;
   }, function(err) {
+    if(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/eat") !== undefined) {
+        var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/eat"));
+        // deferred.resolve(storedData);
+        $scope.localdelights = storedData;
+    }
     console.error('ERR', err);
     // err.status will contain the status code
   })
@@ -261,9 +289,15 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
 .controller('PredepartureCtrl', function($scope, $stateParams, $http) {
   $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist").then(function(resp) {
     console.log('Success', resp.data);
-    
+
+    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist", JSON.stringify(resp.data));
     $scope.predepartures = resp.data;
   }, function(err) {
+    if(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist") !== undefined) {
+        var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist"));
+        // deferred.resolve(storedData);
+        $scope.predepartures = storedData;
+    }
     console.error('ERR', err);
     // err.status will contain the status code
   })

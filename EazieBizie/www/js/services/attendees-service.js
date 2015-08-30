@@ -9,9 +9,16 @@ starter.service("AttendeesService", [  '$rootScope', '$http', '$q', function($ro
 				method : "GET",
 				url : urlBase,
 			}).success(function(data) {
+				window.localStorage.setItem(urlBase, JSON.stringify(data));
 				deferred.resolve(data);
 			}).error(function(error) {
-				deferred.reject(error);
+				if(window.localStorage.getItem(urlBase) !== undefined) {
+	                var storedData = JSON.parse(window.localStorage.getItem(urlBase));
+	                deferred.resolve(storedData);
+	            }
+	            else{
+					deferred.reject(error);
+				}
 			});
 			return deferred.promise;
 		}

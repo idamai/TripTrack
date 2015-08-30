@@ -9,9 +9,17 @@ starter.service("UsersService", [  '$rootScope', '$http', '$q', function($rootSc
 				method : "GET",
 				url : urlBase + '/user/' +userId,
 			}).success(function(data) {
+				window.localStorage.setItem(urlBase + '/user/' +userId, JSON.stringify(data));
 				deferred.resolve(data);
 			}).error(function(error) {
-				deferred.reject(error);
+				if(window.localStorage.getItem(urlBase + '/user/' +userId) !== undefined) {
+	                var storedData = JSON.parse(window.localStorage.getItem(urlBase + '/user/' +userId));
+	                deferred.resolve(storedData);
+	            }
+	            else{
+					deferred.reject(error);
+				}
+				// deferred.reject(error);
 			});
 			return deferred.promise;
 		}
