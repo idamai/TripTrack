@@ -138,17 +138,28 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
      });
    };
 
+   var receipts = resp.data[0].receipts;
+   console.log(receipts);
+   var string = "Hi Ronald, here are the receipts I've accumulated for work in Korea. <br/>";
+   for(x in receipts) {
+      var count = parseInt(x)+1;
+      string = string.concat("<br /><a href='"+receipts[x].image+"'>" + "Receipt " + count + "</a>");
+   }
+
+   string = string.concat("<br/><br/>Thank you,<br/>" + "Ignatius Damai.");
+
+   console.log(string);
    $scope.sendFeedback= function() {
         if(window.plugins && window.plugins.emailComposer) {
             window.plugins.emailComposer.showEmailComposerWithCallback(function(result) {
                 console.log("Response -> " + result);
             }, 
             "Expenses Claim", // Subject
-            "",                      // Body
+            string,                      // Body
             ["manager@accenture.com"],    // To
             null,                    // CC
             null,                    // BCC
-            false,                   // isHTML
+            true,                   // isHTML
             null,                    // Attachments
             null);                   // Attachment Data
         }
