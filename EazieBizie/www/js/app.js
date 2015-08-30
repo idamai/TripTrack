@@ -153,6 +153,15 @@ var starter = angular.module('starter', ['ionic', 'ngCordova'])
         controller: 'ContactsCtrl'
       }
     }
+  })
+	.state('app.attendees', {
+    url: '/attendees/:tripId',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/attendees.html',
+        controller: 'AttendeesCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
