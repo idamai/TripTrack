@@ -3,15 +3,15 @@
     <ion-list>
 		<div class="list card" ng-repeat="event in events">
 		  <div class="item">
-		  	<div class="row">
+		  	<!-- <div class="row"> -->
 			  <div class="col col-100">
 			  	<h2>{{event.name}}</h2>
 		    	<p ng-click="showConfirm('{{event.map}}')" style="white-space: normal;">{{event.address}}</p>
 			  </div>
-			</div>
+			<!-- </div> -->
 		  </div>
 
-		  <div class="item item-body">
+		  <div class="item item-image">
 		    <img class="full-image" src="{{event.image}}">
 		  </div>
 
@@ -19,11 +19,15 @@
 		    <p style="white-space : normal;">
 		    	{{event.details}}
 	    	</p>
-		  </div>
-		  <div class="item">
-		  	<button class="button button-dark button-block" ng-click="addEvent('{{event.name}}', '{{event.address}}','{{event.time}}', '{{event._id}}')" id="{{event._id}}"> Add to Calendar</button>
-		  </div>
-		</div>
-    </ion-list>
+	    	</ion-list>
+	    </br>
+		  <!-- </div> -->
+		  <!-- <div class="item"> -->
+		  <!-- button icon-left ion-star button-positive -->
+		  <!-- button button-dark button-block -->
+		  	<button class="button icon-left ion-heart button-balanced button-block" ng-click="addEvent('{{event.name}}', '{{event.address}}','{{event.time}}', '{{event._id}}')" id="{{event._id}}" style="font-family: 'Source Sans Pro', sans-serif"> Add to Calendar</button>
+		  <!-- </div> -->
+		<!-- </div> -->
+    
   </ion-content>
 </ion-view>
