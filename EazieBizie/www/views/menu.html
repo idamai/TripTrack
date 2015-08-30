@@ -19,16 +19,16 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close>
-          <a class="item item-avatar" href="#/app/profile/idamai">
+        <!-- <ion-item menu-close> -->
+          <a class="item item-avatar menu-close" href="#/app/profile/idamai">
             <img src="{{user[0].image}}">
             <h2>{{user[0].name}}</h2>
             <p>{{user[0].bio}}</p>
           </a>
-        </ion-item>
-        <ion-item menu-close ng-click="login()">
+       <!--  </ion-item> -->
+        <!-- <ion-item menu-close ng-click="login()">
           Logout {{user[0].username}} 
-        </ion-item>
+        </ion-item> -->
         <div="list">
         <ion-item>
           <i class="icon ion-ios-paperplane"></i> Upcoming Trips
@@ -43,6 +43,10 @@
 		<ion-item item-icon-left>
 			<i class="icon ion-ios-plus"></i> Create a New Trip
 		</ion-item>
+    <ion-item menu-close ng-click="login()">
+          <i class="icon ion-person"></i>
+          Logout
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>
