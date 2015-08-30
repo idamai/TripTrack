@@ -45,7 +45,11 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
 
   var response2 = UsersService.getUser("idamai");
   response2.then(function(data2) {
+      if(data2 == null) { 
        $scope.user  = JSON.parse(window.localStorage.getItem("user"));
+      } else {
+        $scope.user = data2;
+      }
   });
 })
 
