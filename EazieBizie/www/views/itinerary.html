@@ -1,7 +1,14 @@
-<ion-view view-title="{{trip.title}}">
+<style>
+ ion-item[isFlight='flight'], ion-item[isFlight='taxi'] {   
+        background-color: #BCE954;
+    }
+</style>
+
+
+<ion-view view-title="Itinerary">
   <ion-content>
 	<ion-list>
-      <ion-item item-icon-left ng-repeat="todo in trip.itinerary" >
+      <ion-item item-icon-left isFlight="{{todo.type}}" ng-repeat="todo in trip.itinerary" >
         <div class = "row row-center">
 			<div class = "col-10 center">
 				<span class = "h2" ng-switch="todo.type">
@@ -21,7 +28,8 @@
 				</div>
 				<div class = "h5">
 					{{todo.details}}
-				</div>				
+				</div>	
+
 			</div>
 		</div>
 	  </ion-item>

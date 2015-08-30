@@ -33,12 +33,18 @@
         <ion-item menu-close ng-click="login()">
           Logout {{user.name}}
         </ion-item>
-        <ion-item class = "h1">
+
+        <div="list">
+        <ion-item>
           <i class="icon ion-ios-paperplane"></i> Upcoming Trips
         </ion-item>
-        <ion-item item-icon-left menu-close ng-repeat="trip in trips" href="#/app/trip/{{trip.id}}">
+
+        <a ng-repeat="trip in trips"  class="item item-icon-left menu-close" href="#/app/trip/{{trip.id}}">
+        <!-- <ion-item item-icon-left menu-close ng-repeat="trip in trips" href="#/app/trip/{{trip.id}}"> -->
 			<i class="icon ion-location"></i> {{trip.title}}
-		</ion-item>
+    </a>
+		<!-- </ion-item> -->
+  </div>
 		<ion-item item-icon-left>
 			<i class="icon ion-ios-plus"></i> Create a New Trip
 		</ion-item>
