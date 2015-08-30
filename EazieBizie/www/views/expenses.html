@@ -1,6 +1,7 @@
-<ion-view view-title="Financial Planning">
+<ion-view view-title="My Expenses">
   <ion-content>
-  	<p style="text-align: center; font-size: 2em; margin: 50px 0px 50px 0px; ">{{totalReceipts}} Receipts = {{totalExpense}} {{currency}}</p>
+  	<!-- <p style="text-align: center; font-size: 1.3em; margin: 50px 0px 50px 0px; ">You have a total of {{totalReceipts}} receipts with {{totalExpense}} {{currency}} spent</p> -->
+  	<h3 style="text-align: center; margin: 50px 0px 50px 0px;">You have a total of {{totalReceipts}} receipts with {{totalExpense}} {{currency}} spent </h3>
    	<div class="list card" ng-repeat="receipt in receipts">
 	  <a ng-click="openModal('{{receipt.image}}')" class="item item-icon-right">
 	    <i class="icon ion-trash-b" style="    margin-right: 15px;
