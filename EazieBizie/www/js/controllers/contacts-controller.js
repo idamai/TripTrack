@@ -2,7 +2,14 @@ starter.controller('ContactsCtrl', function($scope, $stateParams, ContactsServic
 
   var response = ContactsService.get($stateParams.locationId);
   response.then(function(data) {
-			 $scope.contacts  = data;
-			 
+			 if(data == null) {
+			 	console.log($stateParams.locationId);
+			 	$scope.contacts = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/contacts"));
+			 	
+			 } else {
+			 	$scope.contacts  = data;
+
+			 }
+
 	});
 });
