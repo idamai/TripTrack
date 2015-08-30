@@ -38,7 +38,11 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
   };
   var response = TripsService.getTrips();
   response.then(function(data) {
-			 $scope.trips  = data;
+      if(data == null) { 
+       $scope.trips  = JSON.parse(window.localStorage.getItem("trips"));
+      } else {
+        $scope.trips = data;
+      }
   });
 
   var user = window.localStorage.getItem("user");
@@ -292,20 +296,28 @@ starter.controller('AppCtrl', function($scope, $http, $ionicModal, $stateParams,
 })
 
 .controller('PredepartureCtrl', function($scope, $stateParams, $http) {
-  $http.get("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist").then(function(resp) {
-    console.log('Success', resp.data);
 
-    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist", JSON.stringify(resp.data));
-    $scope.predepartures = resp.data;
-  }, function(err) {
-    if(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist") !== undefined) {
-        var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist"));
-        // deferred.resolve(storedData);
-        $scope.predepartures = storedData;
+  $scope.saveCheckbox = function(e) {
+    var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist"));
+    // deferred.resolve(storedData);
+    $scope.predepartures = storedData;
+    for(x in $scope.predepartures) {
+      if($scope.predepartures[x]._id == e) {
+        console.log($scope.predepartures[x]._id);
+        console.log(e);
+        if($scope.predepartures[x].checked == false) {
+          $scope.predepartures[x].checked = true;
+        } else {
+          $scope.predepartures[x].checked = false;
+        }
+      }
     }
-    console.error('ERR', err);
-    // err.status will contain the status code
-  })
+    window.localStorage.setItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist", JSON.stringify($scope.predepartures));
+  }
+
+  var storedData = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/location/"+$stateParams.locationId+"/checklist"));
+  // deferred.resolve(storedData);
+  $scope.predepartures = storedData;
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
