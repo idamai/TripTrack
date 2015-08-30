@@ -1,7 +1,5 @@
 starter.service("AttendeesService", [  '$rootScope', '$http', '$q', function($rootScope, $http, $q) {
-
 	var urlBase = 'http://tutturu.walklight.net/ezbz/users';
-
 	return {
 		get: function() {
 			var deferred = $q.defer();
@@ -23,6 +21,4 @@ starter.service("AttendeesService", [  '$rootScope', '$http', '$q', function($ro
 			return deferred.promise;
 		}
 	}
-
-	
 } ]);
