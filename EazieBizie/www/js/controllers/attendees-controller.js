@@ -1,7 +1,14 @@
 starter.controller('AttendeesCtrl', function($scope, $stateParams,$ionicModal, AttendeesService) {
 	  var response = AttendeesService.get();
 	  response.then(function(data) {
-			 $scope.attendees = data;
+        if(data == null) {
+          console.log($stateParams.locationId);
+          $scope.attendees = JSON.parse(window.localStorage.getItem("http://tutturu.walklight.net/ezbz/users"));
+          
+         } else {
+       $scope.attendees = data;
+
+         }
 	  });
 	  
 	   // Create the login modal that we will use later
